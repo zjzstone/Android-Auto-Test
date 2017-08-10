@@ -1,0 +1,53 @@
+二：monkey参数介绍
+1.-help   查看monkey的帮助信息
+  例：adb shell monkey -help
+
+2.-p   指定被测应用的包名 
+  例：adb shell monkey -p com.UCMobile.x86 100
+  如果想要指定多个包名，每一个包名要跟一个-p
+  例：adb shell monkey -p packageName1 -p packageName2 100
+
+3.  COUNT  设置执行的次数
+  例：adb shell monkey 100
+
+4.-s 设置种子数（相当于设置一个路径，因为monkey是
+  随机事件，所以为了使回归路径一致就需要设置相同的seed值）
+  例：adb shell monkey 100 -s 5
+  如果想重现上面例子的路径下次执行的-s也必须为5
+
+5.--throttle 设置每次随机事件的时间间隔(单位：毫秒)
+  例：adb shell monkey 100 --throttle 500
+
+6.--throttle time --randomize-throttle 设置随机时间的时间间隔区间
+  例：adb shell monkey 100 --throttle 500 --randomize-throttle 
+  说明：执行一百次monkey随机事件，每次事件的间隔在0到500毫秒之间不固定
+
+7.-v 设置日志级别最多(默认一个-v)
+  例：adb shell monkey -v 100
+  如需更详细的日志可以加多个-v,最多3个
+  例：adb shell monkey -v -v -v 100
+
+8.--ignore-crashes   运行中忽略crash，遇到crash依然把后面的事件跑完
+  例：adb shell monkey --ignore-crashes -v 100
+
+9.--ignore-timeouts  运行中忽略ANR,遇到ANR依然把后面的事件跑完
+例：adb shell monkey --ignore-timeouts -v 100
+
+10.设置事件百分比,所有的百分比加起来不能超过100%
+    0：触摸事件百分比，即参数--pct-touch
+    1：滑动事件百分比，即参数--pct-motion
+    2：缩放事件百分比，即参数--pct-pinchzoom
+    3：轨迹球事件百分比，即参数--pct-trackball
+    4：屏幕旋转事件百分比，即参数--pct-rotation
+    5：基本导航事件百分比，即参数--pct-nav
+    6：主要导航事件百分比，即参数--pct-majornav
+    7：系统事件百分比，即参数--pct-syskeys
+    8：Activity启动事件百分比，即参数--pct-appswitch
+    9：键盘翻转事件百分比，即参数--pct-flip
+    10：其他事件百分比，即参数--pct-anyevent
+  例：adb shell monkey --pct-touch 20 -v 100
+
+11.--ignore-native-crashes   忽略monkey本身的异常，直到事件执行完毕
+  例：adb shell monkey --ignore-native-crashes -v 100
+
+
