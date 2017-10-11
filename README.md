@@ -1,9 +1,10 @@
 # 欢迎进入Android自动化测试
-@(我的第一个笔记本)[android, 测试用例]
+@(我的第一个笔记本)[android|测试用例]
 > Android自动化测试的实现可以从[Google Developers](https://developer.android.google.cn/training/testing/index.html)上找到测试用例
 
 ---
 [TOC]
+
 ## 测试金字塔
 
 ### Small tests
